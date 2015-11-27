@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+	<implementation>
+		<specVersion>
+			<major>1</major>
+			<minor>0</minor>
+		</specVersion>
+		<files>L_Rain8net1.lua</files>
+		<settings>
+			<protocol>raw</protocol>
+		</settings>
+
+		<functions>
+		</functions>
+
+		<incoming>
+			<lua>incomingData(lul_data)</lua>
+		</incoming>
+
+		<startup>r8nStartup</startup>
+
+		<actionList>
+
+			<action>
+				<serviceId>urn:upnp-org:serviceId:SwitchPower1</serviceId>
+				<name>SetTarget</name>
+				<run>r8nSetTarget(lul_device, lul_settings.newTargetValue)</run>
+			</action>
+
+			<action>
+				<serviceId>urn:micasaverde-com:serviceId:SecuritySensor1</serviceId>
+				<name>SetArmed</name>
+				<run>sensorArm(lul_device, lul_settings.newArmedValue)</run>
+			</action>
+
+			<action>
+				<serviceId>urn:wgldesigns-com:serviceId:Rain8Net1</serviceId>
+				<name>SetTarget</name>
+				<run>r8nModuleSetTarget(lul_device, lul_settings.newTargetValue)</run>
+			</action>
+
+			<action>
+				<serviceId>urn:wgldesigns-com:serviceId:Rain8Net1</serviceId>
+				<name>Program</name>
+				<run>cycle(lul_device, lul_settings.ProgramNumber)</run>
+			</action>
+
+			<action>
+				<serviceId>urn:wgldesigns-com:serviceId:Rain8Net1</serviceId>
+				<name>GetStatus</name>
+				<run>getStatus(lul_device, lul_settings.newArmedValue)</run>
+			</action>
+      
+			<action>
+				<serviceId>urn:wgldesigns-com:serviceId:Rain8Net1</serviceId>
+				<name>RequestTimers</name>
+				<run>requestTimers(lul_device)</run>
+			</action>
+      
+			<action>
+				<serviceId>urn:wgldesigns-com:serviceId:Rain8Net1</serviceId>
+				<name>SetTimers</name>
+				<run>setTimers(lul_device, lul_settings)</run>
+			</action>
+			
+			<action>
+				<serviceId>urn:zoot-org:serviceId:Counter1</serviceId>
+				<name>GetCurrentCounter</name>
+				<run>getCurrentCount(lul_device)</run>
+			</action>
+			
+			<action>
+				<serviceId>urn:zoot-org:serviceId:Counter1</serviceId>
+				<name>ResetCounter</name>
+				<run>resetCounter(lul_device)</run>
+			</action>
+
+		</actionList>
+</implementation>
+
