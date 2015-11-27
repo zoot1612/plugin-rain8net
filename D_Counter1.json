@@ -1,0 +1,207 @@
+{
+    "flashicon": "icons/generic_sensor.png",
+  "iconText": "1",
+  "imgIconBody": "",
+  "imgIconDimmable": "",
+  "imgIconTurnable": "",
+  "imgIconMin": "",
+  "imgIconMax": "",
+  "halloIconsDir": "pics\/hallo",
+  "x": "2",
+  "y": "3",
+    "inScene": "1",
+    
+    "DisplayStatus": {
+        "Style": "numeric",
+        "Service": "urn:zoot-org:serviceId:Counter1",
+        "Variable": "CurrentCount",
+        "MinValue": "0",
+        "MaxValue": "65535",
+    },
+    "doc_url": {
+        "doc_language": 1,
+        "doc_manual": 1,
+        "doc_version": 1,
+        "doc_platform": 0,
+        "doc_page": "sensors"
+    },
+    
+  "Tabs": [
+    {
+      "Label": {
+        "lang_tag": "tabname_control",
+        "text": "Control"
+      },
+      "Position": "0",
+      "TabType": "flash",
+      "ControlGroup": [
+        {
+          "id": "1",
+          "isSingle": "1",
+          "scenegroup": "1"
+        }
+      ],
+      "SceneGroup": [
+        {
+          "id": "1",
+          "top": "1.5",
+          "left": "0.25",
+          "x": "1.5",
+          "y": "2"
+        }
+      ],
+      "Control": [
+        {
+          "ControlGroup": "1",
+          "ControlType": "label",
+          "top": "0",
+          "left": "0",
+          "Label": {
+            "lang_tag": "counter",
+            "text": "Counter"
+          },
+          "Display": {
+            "Top": 60,
+            "Left": 40,
+            "Width": 75,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "1",
+          "ControlType": "variable",
+          "top": "0",
+          "left": "1",
+          "text_align": "left",
+          "Display": {
+            "Service": "urn:zoot-org:serviceId:Counter1",
+            "Variable": "CurrentCount",
+            "Top": 60,
+            "Left": 105,
+            "Width": 75,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "1",
+          "ControlType": "button",
+          "top": "1",
+          "left": "0",
+          "Label": {
+            "lang_tag": "cmd_reset",
+            "text": "Reset"
+          },
+          "Display": {
+            "Service": "urn:zoot-org:serviceId:Counter1",
+            "Variable": "CurrentCount",
+            "Value": "0",
+            "Top": 60,
+            "Left": 180,
+            "Width": 75,
+            "Height": 20
+          },
+          "Command": {
+            "Service": "urn:zoot-org:serviceId:Counter1",
+            "Action": "ResetCounter",
+            "Parameters": [
+              {
+                "Name": "ResetCount"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Label": {
+        "lang_tag": "advanced",
+        "text": "Advanced"
+      },
+      "Position": "2",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "advanced_device"
+    },
+    {
+      "Label": {
+        "lang_tag": "logs",
+        "text": "Logs"
+      },
+      "Position": "4",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_logs"
+    },
+    {
+      "Label": {
+        "lang_tag": "notifications",
+        "text": "Notifications"
+      },
+      "Position": "5",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_notifications"
+    }
+  ],
+  "eventList2": [
+    {
+      "id": 1,
+      "label": {
+        "lang_tag": "counter_goes_above",
+        "text": "Counter goes above"
+      },
+      "serviceId": "urn:zoot-org:serviceId:Counter1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "CurrentCount",
+          "comparisson": ">",
+          "prefix": {
+            "lang_tag": "counter",
+            "text": "Counter"
+          },
+          "suffix": {
+            "lang_tag": "",
+            "text": ""
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "counter_goes_above",
+            "text": "_DEVICE_NAME_ counter goes above _ARGUMENT_VALUE_"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "label": {
+        "lang_tag": "counter_goes_below",
+        "text": "Counter goes below"
+      },
+      "serviceId": "urn:zoot-org:serviceId:Counter1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "CurrentCounter",
+          "comparisson": "<",
+          "prefix": {
+            "lang_tag": "counter",
+            "text": "Counter"
+          },
+          "suffix": {
+            "lang_tag": "",
+            "text": ""
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "counter_goes_below",
+            "text": "_DEVICE_NAME_ counter goes below _ARGUMENT_VALUE_"
+          }
+        }
+      ]
+    }
+  ],
+  "DeviceType": "urn:schemas-zoot-com:device:Counter:1"
+}
