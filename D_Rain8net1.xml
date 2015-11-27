@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <device>
+    <deviceType>urn:schemas-wgldesigns-com:device:Rain8Net:1</deviceType>
+    <staticJson>D_Rain8net1.json</staticJson>
+    <friendlyName>Rain8net over RS232 or Ethernet</friendlyName>
+    <manufacturer>WGLAssociates</manufacturer>
+    <manufacturerURL>http://www.wgldesigns.com</manufacturerURL>
+    <modelDescription>Rain8net serial relay</modelDescription>
+    <modelName>Rain8net</modelName>
+    <modelNumber>1.0</modelNumber>
+    <UDN>uuid:2ff93ec0-c2f8-11dd-ad8b-08fff0c9a67</UDN>
+    <protocol>raw</protocol>
+    <handleChildren>1</handleChildren>
+    <implementationList>
+    <implementationFile>I_Rain8net1.xml</implementationFile>
+    </implementationList>
+    <serviceList>
+    <service>
+      <serviceType>urn:wgldesigns-com:serviceId:Rain8Net:1</serviceType>
+      <serviceId>urn:wgldesigns-com:serviceId:Rain8Net1</serviceId>
+      <SCPDURL>S_Rain8net1.xml</SCPDURL>
+    </service>
+  </serviceList>
+  <Category_Num>11</Category_Num>
+  </device>
+</root>
