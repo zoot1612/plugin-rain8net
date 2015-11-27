@@ -1,0 +1,278 @@
+{
+    "flashicon": "icons/Binary_Light.png",
+    "imgIconMin": "icons/Binary_Light_0.png",
+    "imgIconMax": "icons/Binary_Light.png",
+    "halloIconsDir": "pics/hallo",
+    "state_icons": [
+        "Binary_Light_0.png",
+        "Binary_Light_100.png"
+    ],
+    "inScene": "1",
+	"DisplayStatus": {
+		"Service": "urn:wgldesigns-com:serviceId:Rain8Net1",
+		"Variable": "Status",
+		"MinValue": "0",
+		"MaxValue": "1"
+	},
+	"Tabs": [
+		{
+			"Label": {
+				"lang_tag": "tabname_control",
+				"text": "Control"
+			},
+			"Position": "0",
+			"TabType": "flash",
+			"ControlGroup": [
+				{
+					"id": "1",
+					"isSingle": "1",
+					"scenegroup": "1"
+				},
+				{
+					"id": "2",
+					"isSingle": "1",
+					"scenegroup": "2"
+				},
+				{
+					"id": "3",
+					"isSingle": "1",
+					"scenegroup": "3"
+				}
+			],
+			"SceneGroup":[
+				{
+					"id": "1",
+					"top": "0",
+					"left": "0",
+					"x": "1",
+					"y": "1"
+				},
+				{
+					"id": "2",
+					"top": "1",
+					"left": "0",
+					"x": "2",
+					"y": "2"
+				},
+				{
+					"id": "3",
+					"top": "3",
+					"left": "0",
+					"x": "3",
+					"y": "1"
+				}
+			],
+			"Control": [
+
+				{
+					"ControlGroup": "3",
+					"ControlType": "variable",
+					"left": "0",
+					"text_align": "left",
+					"Display": {
+						"Service": "urn:wgldesigns-com:serviceId:Rain8Net1",
+						"Variable": "State",
+						"Top": 20,
+						"Left": 80,
+						"Width": 75,
+						"Height": 20
+					}
+				},
+				{
+					"ControlGroup": "1",
+					"ControlType": "button",
+					"top": "0",
+					"left": "0",
+					"Label": {
+						"lang_tag": "cmd_off",
+						"text": "Off"
+					},
+					"Display": {
+						"Service": "urn:wgldesigns-com:serviceId:Rain8Net1",
+						"Variable": "Status",
+						"Value": "0",
+						"Top": 60,
+						"Left": 380,
+						"Width": 75,
+						"Height": 20
+					},
+					"Command": {
+						"Service": "urn:wgldesigns-com:serviceId:Rain8Net1",
+						"Action": "SetTarget",
+						"Parameters": [
+							{
+								"Name": "newTargetValue",
+								"Value": "0"
+							}
+						]
+					}
+				},
+        {
+					"ControlGroup": "2",
+					"ControlType": "button",
+					"top": "0",
+					"left": "0",
+					"Label": {
+						"lang_tag": "cmd_A",
+						"text": "Prog A"
+					},
+					"Display": {
+						"Service": "urn:wgldesigns-com:serviceId:Rain8Net1",
+						"Variable": "program",
+						"Value": "A",
+						"Top": 60,
+						"Left": 150,
+						"Width": 75,
+						"Height": 20
+					},
+					"Command": {
+						"Service": "urn:wgldesigns-com:serviceId:Rain8Net1",
+						"Action": "Program",
+						"Parameters": [
+							{
+								"Name": "ProgramNumber",
+								"Value": "A"
+							}
+						]
+					}
+				},
+				{
+					"ControlGroup": "2",
+					"ControlType": "button",
+					"top": "0",
+					"left": "1",
+					"Label": {
+						"lang_tag": "cmd_B",
+						"text": "Prog B"
+					},
+					"Display": {
+						"Service": "urn:wgldesigns-com:serviceId:Rain8Net1",
+						"Variable": "program",
+						"Value": "B",
+						"Top": 60,
+						"Left": 240,
+						"Width": 75,
+						"Height": 20
+					},
+					"Command": {
+						"Service": "urn:wgldesigns-com:serviceId:Rain8Net1",
+						"Action": "Program",
+						"Parameters": [
+							{
+								"Name": "ProgramNumber",
+								"Value": "B"
+							}
+						]
+					}
+				},
+				{
+					"ControlGroup": "2",
+					"ControlType": "button",
+					"top": "1",
+					"left": "0",
+					"Label": {
+						"lang_tag": "cancel",
+						"text": "Cancel"
+					},
+					"Display": {
+						"Service": "urn:wgldesigns-com:serviceId:Rain8Net1",
+						"Variable": "program",
+						"Value": "cancel",
+						"Top": 90,
+						"Left": 150,
+						"Width": 75,
+						"Height": 20
+					},
+					"Command": {
+						"Service": "urn:wgldesigns-com:serviceId:Rain8Net1",
+						"Action": "Program",
+						"Parameters": [
+							{
+								"Name": "ProgramNumber",
+								"Value": "cancel"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+		"Label": {
+		 "lang_tag": "advanced",
+		"text": "Advanced"
+		},
+		"Position": "1",
+		"TabType": "javascript",
+		"ScriptName": "shared.js",
+		"Function": "advanced_device"
+		},
+		{
+		"Label": {
+		 "lang_tag": "timers",
+		"text": "Timers"
+		},
+		"Position": "2",
+		"TabType": "javascript",
+		"ScriptName": "J_Rain8net1.js",
+		"Function": "timers"
+		}
+	],
+	"DeviceType": "urn:schemas-wgldesigns-com:device:Rain8Net:1",
+	"eventList2": [
+		{
+			"id": 1,
+			"label": {
+				"lang_tag": "device_turned_off",
+				"text": "A device is turned off"
+			},
+			"serviceId": "urn:wgldesigns-com:serviceId:Rain8Net1",
+			"argumentList": [
+				{
+					"id": 1,
+					"dataType": "boolean",
+					"defaultValue": "0",
+					"allowedValueList": [
+						{
+							"Off": "0",
+							"HumanFriendlyText": {
+								"lang_tag": "hft_device_turned_off",
+								"text": "_DEVICE_NAME_ is turned Off"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": 2,
+			"label": {
+				"lang_tag": "programme_started",
+				"text": "A program cycle has started"
+			},
+			"serviceId": "urn:wgldesigns-com:serviceId:Rain8Net1",
+			"argumentList": [
+				{
+					"id": 3,
+					"dataType": "string",
+					"defaultValue": "A",
+					"allowedValueList": [
+						{
+							"Program A": "A",
+							"HumanFriendlyText": {
+								"lang_tag": "auto_A",
+								"text": "_DEVICE_NAME_ program A"
+							}
+						},
+						{
+							"Program B": "B",
+							"HumanFriendlyText": {
+								"lang_tag": "auto_B",
+								"text": "_DEVICE_NAME_ program B"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
