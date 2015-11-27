@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+
+  <serviceStateTable>
+
+    <stateVariable sendEvents="no">
+      <name>Target</name>
+      <sendEventsAttribute>no</sendEventsAttribute>
+      <dataType>boolean</dataType>
+      <defaultValue>0</defaultValue>
+    </stateVariable>
+
+    <stateVariable sendEvents="yes">
+      <name>program</name>
+      <dataType>string</dataType>
+      <shortCode>Automatic</shortCode>
+    </stateVariable>
+
+	<stateVariable sendEvents="yes">
+      <name>State</name>
+      <dataType>string</dataType>
+      <defaultValue>"00000000"</defaultValue>
+      <shortCode>State</shortCode>
+    </stateVariable>
+    
+    <stateVariable sendEvents="yes">
+      <name>Status</name>
+      <dataType>boolean</dataType>
+      <defaultValue>0</defaultValue>
+      <shortCode>Status</shortCode>
+    </stateVariable>
+    
+
+  </serviceStateTable>
+
+  <actionList>
+
+    <action>
+    <name>SetTarget</name>
+      <argumentList>
+        <argument>
+          <name>newTargetValue</name>
+          <direction>in</direction>
+          <relatedStateVariable>Target</relatedStateVariable>
+        </argument>
+      </argumentList>
+    </action>
+
+    <action>
+    <name>Program</name>
+      <argumentList>
+        <argument>
+          <name>ProgramNumber</name>
+          <direction>in</direction>
+          <relatedStateVariable>program</relatedStateVariable>
+        </argument>
+      </argumentList>
+    </action>
+    
+    <action>
+    <name>GetStatus</name>
+      <argumentList>
+        <argument>
+          <name>ResultStatus</name>
+          <direction>out</direction>
+          <relatedStateVariable>Status</relatedStateVariable>
+        </argument>
+      </argumentList>
+    </action>
+    
+    <action>
+      <name>RequestTimers</name>
+      <argumentList>
+        <argument>
+          <name>Zone</name>
+          <direction>in</direction>
+        </argument>
+      </argumentList>
+    </action>
+    
+    <action>
+      <name>SetTimers</name>
+      <argumentList>
+        <argument>
+          <name>Zone</name>
+          <direction>in</direction>
+        </argument>
+        <argument>
+          <name>ProgramA</name>
+          <direction>in</direction>
+        </argument>
+        <argument>
+          <name>ProgramB</name>
+          <direction>in</direction>
+        </argument>
+      </argumentList>
+    </action>
+    
+  </actionList>
+</scpd>
