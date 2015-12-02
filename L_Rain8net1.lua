@@ -1,7 +1,7 @@
-local VERSION = '0.998'
+local VERSION = '0.999'
 
-local DEVICETYPE_RELAY = "urn:schemas-upnp-org:device:BinaryLight:1"
-local DEVICEFILE_RELAY = "D_BinaryLight1.xml"
+local DEVICETYPE_RELAY = "urn:schemas-micasaverde-com:device:Relay:1"
+local DEVICEFILE_RELAY = "D_Relay1.xml"
 
 local SWP_SID = "urn:upnp-org:serviceId:SwitchPower1"
 local SWP_STATUS = "Status"
