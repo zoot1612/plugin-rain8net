@@ -1,4 +1,4 @@
-local VERSION = '0.996'
+local VERSION = '0.997'
 
 local DEVICETYPE_RELAY = "urn:schemas-upnp-org:device:BinaryLight:1"
 local DEVICEFILE_RELAY = "D_BinaryLight1.xml"
@@ -673,6 +673,7 @@ local function initParameter()
   for k, v in pairs(luup.devices) do
     if tostring(v.device_num_parent) == tostring(R8NMODULE)  then
       if tostring(v.device_type) == DEVICETYPE_RELAY  then
+      	luup.attr_set("category_num", "3", k)
         luup.variable_set(HADEVICE_SID, HAD_LAST_UPDATE, time, k)
         local pumpNumber = (luup.variable_get(SWP_SID,"PumpNumber",k) or "")
         if (pumpNumber == "") then
@@ -695,16 +696,19 @@ local function initParameter()
           luup.variable_set(SWP_SID,"Program_B","0",k)
         end
       elseif tostring(v.device_type) == DEVICETYPE_MOTION_SENSOR  then
+      	luup.attr_set("category_num", "25", k)
         local arm = (luup.variable_get(SES_SID,SES_ARMED,k) or "")
         if (arm == "") then
           luup.variable_set(SES_SID,SES_ARMED,'1',k)
         end
       elseif tostring(v.device_type) == DEVICETYPE_COUNTER  then
+      	luup.attr_set("category_num", "25", k)
         local rev = (luup.variable_get(COUNTER_SID,"R Sec",k) or "")
         if (rev == "") then
           luup.variable_set(COUNTER_SID,"R Sec",'0',k)
         end
       else
+      	luup.attr_set("category_num", "25", k)
         debug(string.format("initParameter: \"%s\" device type with device number %i under parent device %i not handled", v.device_type, k, R8NMODULE))
       end
     end
