@@ -170,7 +170,7 @@ function getTimers(table, device, status)
         zone.innerHTML = Log[i].Zone;
         master.innerHTML = Log[i].Master;
         prog.innerHTML = form;
-        lastRun.innerHTML = dt;
+        lastRun.innerHTML = dt.toDateString();
       }
 
       status.innerHTML = '<td colspan="5">Completed</td>';
