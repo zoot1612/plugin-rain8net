@@ -1,4 +1,4 @@
-local VERSION = '0.997'
+local VERSION = '0.998'
 
 local DEVICETYPE_RELAY = "urn:schemas-upnp-org:device:BinaryLight:1"
 local DEVICEFILE_RELAY = "D_BinaryLight1.xml"
@@ -708,7 +708,7 @@ local function initParameter()
           luup.variable_set(COUNTER_SID,"R Sec",'0',k)
         end
       else
-      	luup.attr_set("category_num", "25", k)
+      	luup.attr_set("category_num", "1", k)
         debug(string.format("initParameter: \"%s\" device type with device number %i under parent device %i not handled", v.device_type, k, R8NMODULE))
       end
     end
