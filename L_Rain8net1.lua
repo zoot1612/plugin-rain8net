@@ -1,4 +1,4 @@
-local VERSION = '0.999'
+local VERSION = '1.0'
 
 local DEVICETYPE_RELAY = "urn:schemas-micasaverde-com:device:Relay:1"
 local DEVICEFILE_RELAY = "D_Relay1.xml"
@@ -806,6 +806,10 @@ local function r8nConnect(lul_device)
   else
     log ("Rain8Net: running on Serial.")
   end
+  if( luup.io.is_connected(lul_device)==false ) then
+    return false
+  end
+  return true
 end
 
 
@@ -818,7 +822,10 @@ end
 
 function r8nStartup(lul_device)
   R8NMODULE = lul_device
-  r8nConnect(R8NMODULE)
+  local status = r8nConnect(R8NMODULE)
+  if (status == false) then
+  	return false,"Connection Failed", "Rain8Net"
+  end
   
   local debugMode = luup.variable_get(R8N_SID, "DebugMode", R8NMODULE) or ""
   if (debugMode ~= "") then
@@ -872,11 +879,10 @@ function r8nStartup(lul_device)
     getModules()
   end
   
+  luup.register_handler("callbackHandler", "programs")
   luup.call_delay("pollTimed", 60, "", false)
   luup.call_delay("taskHandleCreate", 90, "", false)
-  
-    luup.register_handler("callbackHandler", "programs")
-  
+  luup.set_failure(false)
   return true, "Startup complete", "Rain8Net"
 end
 --------------------------------------------------------------------------------
