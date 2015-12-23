@@ -1,4 +1,4 @@
-local VERSION = '1.0'
+local VERSION = '1.002'
 
 local DEVICETYPE_RELAY = "urn:schemas-micasaverde-com:device:Relay:1"
 local DEVICEFILE_RELAY = "D_Relay1.xml"
