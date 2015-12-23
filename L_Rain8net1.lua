@@ -824,7 +824,7 @@ function r8nStartup(lul_device)
   R8NMODULE = lul_device
   local status = r8nConnect(R8NMODULE)
   if (status == false) then
-  	return false,"Connection Failed", "Rain8Net"
+    return false,"Connection Failed", "Rain8Net"
   end
   
   local debugMode = luup.variable_get(R8N_SID, "DebugMode", R8NMODULE) or ""
